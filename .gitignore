@@ -13,7 +13,7 @@ target/
 ### VS Code ###
 .vscode/
 
-log/
+logs/
 
 # Mac
 .DS_Store
