@@ -1,0 +1,74 @@
+version: "3"
+
+services:
+  productsdb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=L0calpaS5
+      - POSTGRES_DB=products
+    networks:
+      - products_network
+
+  productapi:
+    image: product.api:${TAG:-latest}
+    ports:
+      - "80:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - AWS_ACCESS_KEY_ID=blah
+      - AWS_SECRET_ACCESS_KEY=blah
+      - AWS_REGION=ap-southeast-2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - products_network
+    depends_on:
+      - productsdb
+      - localstack
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4568-4576:4568-4576"
+      - "${PORT_WEB_UI-8081}:${PORT_WEB_UI-8081}"
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - SERVICES=sns:4575
+      - AWS_ACCESS_KEY_ID=blah
+      - AWS_SECRET_ACCESS_KEY=blah
+      - AWS_REGION=ap-southeast-2
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/private${TMPDIR}:/tmp/localstack"
+    networks:
+      - products_network
+
+  setup-resources:
+    image: mesosphere/aws-cli
+    volumes:
+      - ./dev_env:/project/dev_env
+    environment:
+      - AWS_ACCESS_KEY_ID=blah
+      - AWS_SECRET_ACCESS_KEY=blah
+      - AWS_DEFAULT_REGION=ap-southeast-2
+    entrypoint: /bin/sh -c
+    command: >
+      "
+        # Needed so all localstack components will startup correctly (i'm sure there's a better way to do this)
+        # sleep 20;
+
+        aws sns create-topic --endpoint-url=http://localstack:4575 --name StuProductTopic;
+
+        aws sns list-topics --endpoint-url=http://localstack:4575;
+      "
+    networks:
+      - products_network
+    depends_on:
+      - localstack
+
+networks:
+  products_network:

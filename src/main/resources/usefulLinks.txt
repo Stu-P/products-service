@@ -1,0 +1,16 @@
+https://www.callicoder.com/hibernate-spring-boot-jpa-one-to-many-mapping-example/
+
+https://www.baeldung.com/spring-boot-actuators
+
+https://reflectoring.io/spring-robust-sqs-client/
+
+// Async
+	// https://github.com/resilience4j/resilience4j-spring-boot2-demo
+	// https://nirajsonawane.github.io/2019/01/27/Write-Clean-asynchronous-code-with-CompletableFuture-Java-8/
+	// https://medium.com/@vimalma1093/java-springboot-blocking-vs-non-blocking-rest-api-implementation-fe5643840287
+
+
+	https://dzone.com/articles/java-microservice-async-rest-client-to-dynamodb-us
+
+
+// To package (./mvnw clean package)

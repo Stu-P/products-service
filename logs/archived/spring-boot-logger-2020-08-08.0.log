@@ -1,0 +1,9 @@
+2020-08-08 00:11:36,434 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-7 housekeeper] HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=1m24s802ms).
+2020-08-08 01:28:00,623 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-7 housekeeper] HikariPool-7 - Retrograde clock change detected (housekeeper delta=29s841ms), soft-evicting connections from pool.
+2020-08-08 04:31:04,609 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-7 housekeeper] HikariPool-7 - Retrograde clock change detected (housekeeper delta=29s348ms), soft-evicting connections from pool.
+2020-08-08 11:00:32,074 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-7 housekeeper] HikariPool-7 - Thread starvation or clock leap detected (housekeeper delta=1m23s394ms).
+2020-08-08 15:22:00,544 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-08-08 15:22:00,548 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringContextShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2020-08-08 15:22:00,834 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-08 15:22:00,835 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-7 - Shutdown initiated...
+2020-08-08 15:22:00,858 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-7 - Shutdown completed.
