@@ -27,6 +27,7 @@ public class KafkaEventPublisher implements IEventPublisher {
             Message<IEvent> message = MessageBuilder
                     .withPayload(event)
                     .setHeader(KafkaHeaders.TOPIC, topicName)
+                    .setHeader(KafkaHeaders.MESSAGE_KEY, event.getKey())
                     .build();
 
             publisher.send(message);

@@ -31,6 +31,11 @@ public class ProductCreatedEvent implements IEvent {
     // endregion
 
     @Override
+    public String getKey() {
+        return getProduct().getId().toString();
+    }
+
+    @Override
     public String toString() {
         return "ProductCreatedEvent{" +
                 "product=" + product +

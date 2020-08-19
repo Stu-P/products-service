@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  productsdb:
+  productapi.db:
     image: postgres
     ports:
       - "5432:5432"
@@ -27,7 +27,7 @@ services:
     networks:
       - products_network
     depends_on:
-      - productsdb
+      - productapi.db
       - localstack
 
   localstack:
@@ -58,7 +58,7 @@ services:
     entrypoint: /bin/sh -c
     command: >
       "
-        # Needed so all localstack components will startup correctly (i'm sure there's a better way to do this)
+        # Needed so all localstack components will startup correctly
         # sleep 20;
 
         aws sns create-topic --endpoint-url=http://localstack:4575 --name StuProductTopic;
