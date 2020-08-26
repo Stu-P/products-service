@@ -53,8 +53,12 @@ public class PriceChangeService implements CommandLineRunner {
             }
         }, 1 * 60 * 1000, 1 * 60 * 1000);
 
+
         while (true) {
-            if (flags.isPricePublishEnabled()) {
+
+            boolean isEnabled = flags.isPricePublishEnabled();
+
+            if (isEnabled) {
                 for (Product p : products) {
 
                     try {
@@ -72,7 +76,7 @@ public class PriceChangeService implements CommandLineRunner {
                     }
                 }
             }
-            Thread.sleep(150);
+           // Thread.sleep(0);
         }
     }
 

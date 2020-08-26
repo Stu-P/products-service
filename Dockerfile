@@ -1,4 +1,3 @@
-# Use our standard java12 baseimage
 FROM openjdk:14-jdk-alpine
 
 # Copy the artifact into the container

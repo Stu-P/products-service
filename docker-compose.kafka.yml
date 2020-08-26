@@ -18,6 +18,9 @@ services:
       - "80:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - AWS_ACCESS_KEY_ID=blah
+      - AWS_SECRET_ACCESS_KEY=blah
+      - AWS_REGION=ap-southeast-2
     build:
       context: .
       dockerfile: Dockerfile
